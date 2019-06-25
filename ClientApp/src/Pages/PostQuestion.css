@@ -1,0 +1,9 @@
+.title-input {
+  width: 381px;
+}
+
+.text-area {
+  width: 381px;
+  border-radius: 0.25rem;
+  margin-top: 2rem;
+}
