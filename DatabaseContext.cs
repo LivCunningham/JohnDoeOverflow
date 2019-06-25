@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using johndoeoverflow.models;
 
 
 namespace johndoeoverflow
@@ -30,7 +31,7 @@ namespace johndoeoverflow
       {
         var envConn = Environment.GetEnvironmentVariable("DATABASE_URL");
 
-        var conn = "server=localhost;database=JohnDoeOverflow;User Id=postgres;Password=Squeakyunicorn1 ";
+        var conn = "server=localhost;database=JohnDoeOverflow;";
         if (envConn != null)
         {
           conn = ConvertPostConnectionToConnectionString(envConn);
@@ -45,5 +46,7 @@ namespace johndoeoverflow
     {
       modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
     }
+    public DbSet<Question> Questions { get; set; }
+    public DbSet<Answer> Answers { get; set; }
   }
 }
