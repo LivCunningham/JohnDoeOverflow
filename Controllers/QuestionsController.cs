@@ -16,8 +16,8 @@ namespace johndoeoverflow.Controllers
       this.db = new DatabaseContext();
     }
     // Search questions asked, GET
-    // **** This is where you will filter each question individually by the search bar
-    // **** Should be a query to filter down list
+    // *This is where you will filter each question individually by the search bar
+    // *Should be a query to filter down list
     [HttpGet]
     public ActionResult<List<Question>> GetQuestions()
     {
@@ -42,13 +42,6 @@ namespace johndoeoverflow.Controllers
       return question;
     }
 
-    // Answer a question, PUT
-    [HttpPut("{id}")]
-    public ActionResult<Answer> Answer()
-    {
-      return Ok();
-    }
-
     // Up/Down vote a question, PUT
     [HttpPut("voteQ/{id}")]
     public ActionResult<Question> VoteAQuestion(int id, [FromBody]Question oldCount)
@@ -57,13 +50,6 @@ namespace johndoeoverflow.Controllers
       newCount.VoteCount = oldCount.VoteCount;
       db.SaveChanges();
       return newCount;
-    }
-
-    // Up/Down vote an answer, PUT
-    [HttpPut("voteAnswer/{id}")]
-    public ActionResult<Answer> VoteAnAnswer()
-    {
-      return Ok();
     }
   }
 }

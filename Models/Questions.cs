@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace johndoeoverflow.models
 {
@@ -10,6 +11,6 @@ namespace johndoeoverflow.models
     public string Description { get; set; }
     public DateTime DatePosted { get; set; } = DateTime.Now;
     public int VoteCount { get; set; } = 0;
-    public List<Answer> Answers { get; set; }
+    public List<Answer> Answers { get; set; } = new List<Answer>();
   }
 }
