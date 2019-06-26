@@ -8,6 +8,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 35vw;
+  margin-top: 8rem;
 }
 
 .input-Q {
@@ -28,11 +30,8 @@
 .text-area {
   border-radius: 0.5rem;
   text-align: center;
-  margin: 0rem 5rem 0rem 5rem;
-}
-
-.text-area p {
-  padding-left: 1rem;
+  /* margin: 0rem 5rem 0rem 5rem; */
+  width: 45vw;
 }
 
 h2 {
@@ -40,7 +39,7 @@ h2 {
   justify-content: center;
   align-items: center;
   padding-bottom: 2rem;
-  margin-top: 15rem;
+  margin-top: 3rem;
   font-size: 24px;
 }
 
@@ -49,7 +48,8 @@ h2 {
 }
 
 .Post {
-  background-color: rgb(248, 241, 241);
+  background-color: rgb(250, 244, 244);
+  box-shadow: 0.2rem 0.2rem 0.2rem;
   padding-top: -3rem;
   padding-bottom: 3rem;
 }
