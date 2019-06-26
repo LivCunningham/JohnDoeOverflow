@@ -16,24 +16,30 @@ namespace johndoeoverflow.Controllers
       this.db = new DatabaseContext();
     }
     // Search questions asked, GET
+    // **** This is where you will filter each question individually by the search bar
+    // **** Should be a query to filter down list
     [HttpGet]
     public ActionResult<List<Question>> GetQuestions()
     {
-      return Ok();
+      var rv = db.Questions;
+      return rv.ToList();
     }
 
     // View an individual question, GET
     [HttpGet("{id}")]
-    public ActionResult<Question> GetAQuestion()
+    public ActionResult<Question> GetAQuestion(int id)
     {
-      return Ok();
+      var question = db.Questions.Find(id);
+      return question;
     }
 
     // Create a new question, POST
     [HttpPost]
-    public ActionResult<Question> PostAQuestion()
+    public ActionResult<Question> PostAQuestion([FromBody]Question question)
     {
-      return Ok();
+      db.Questions.Add(question);
+      db.SaveChanges();
+      return question;
     }
 
     // Answer a question, PUT
@@ -44,14 +50,17 @@ namespace johndoeoverflow.Controllers
     }
 
     // Up/Down vote a question, PUT
-    [HttpPut]
-    public ActionResult<Question> VoteAQuestion()
+    [HttpPut("voteQ/{id}")]
+    public ActionResult<Question> VoteAQuestion(int id, [FromBody]Question oldCount)
     {
-      return Ok();
+      var newCount = db.Questions.FirstOrDefault(f => f.Id == id);
+      newCount.VoteCount = oldCount.VoteCount;
+      db.SaveChanges();
+      return newCount;
     }
 
     // Up/Down vote an answer, PUT
-    [HttpPut]
+    [HttpPut("voteAnswer/{id}")]
     public ActionResult<Answer> VoteAnAnswer()
     {
       return Ok();
