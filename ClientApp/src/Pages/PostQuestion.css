@@ -1,9 +1,55 @@
-.title-input {
-  width: 381px;
-}
-
-.text-area {
+/* @media () .text-area {
   width: 381px;
   border-radius: 0.25rem;
   margin-top: 2rem;
+} */
+
+.question-post {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input-Q {
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+  align-content: space-around;
+}
+
+.title-input {
+  border-radius: 0.5rem;
+  text-align: center;
+  margin: 0rem 5rem 1rem 5rem;
+  width: 75%;
+}
+
+.text-area {
+  border-radius: 0.5rem;
+  text-align: center;
+  margin: 0rem 5rem 0rem 5rem;
+}
+
+.text-area p {
+  padding-left: 1rem;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2rem;
+  margin-top: 15rem;
+  font-size: 24px;
+}
+
+.submit-Q {
+  margin-top: 1rem;
+}
+
+.Post {
+  background-color: rgb(248, 241, 241);
+  padding-top: -3rem;
+  padding-bottom: 3rem;
 }
