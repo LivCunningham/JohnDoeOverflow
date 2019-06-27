@@ -1,22 +1,26 @@
 import React, { Component } from 'react'
 import './PostQuestion.css'
+import axios from 'axios'
 
 class PostQuestion extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: ''
+      question: {}
     }
   }
 
   //add new question post
-  addNewQuestion = event => {
-    this.setState({ value: event.target.value })
+  updateValue = event => {
+    const state = this.state
+    state.question[event.target.name] = event.target.value
+    this.setState(state)
   }
 
   //submit form
   submitNewQuestion = event => {
-    this.setState({ value: event.target.value })
+    event.preventDefault()
+    axios.post('/api/questions', this.state.question)
   }
 
   render() {
@@ -24,21 +28,21 @@ class PostQuestion extends Component {
       <section className="Post">
         <div className="question-post">
           <h2>POST YOUR QUESTION BELOW</h2>
-          <form className="input-Q">
+          <form className="input-Q" onSubmit={this.submitNewQuestion}>
             <input
               className="title-input"
               type="text"
               placeholder="Hey, JohnDoe! What's your question? Be specific. "
-              onChange={this.addNewQuestion}
-              value={this.state.value}
+              name="title"
+              onChange={this.updateValue}
             />
             <textarea
               className="text-area"
               rows="10"
               cols="150"
-              onChange={this.addNewQuestion}
-              value={this.state.value}
+              onChange={this.updateValue}
               placeholder="Tell us more about your question here..."
+              name="description"
             />
             <button className="submit-Q">
               <h3>Submit</h3>
