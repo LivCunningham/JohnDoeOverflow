@@ -1,34 +1,63 @@
-.Hero h3 {
-  text-align: left;
-  padding-top: 7rem;
-}
-
-.feed {
-  list-style: none;
-}
-
-.Hero {
+.title {
   display: flex;
-  align-items: flex-end;
+  text-align: center;
+  padding: 0px 10px;
+  font-size: 17pt;
+  font-weight: 700;
+  margin: 0px;
 }
 
-.ask {
-  margin-left: 35rem;
-  width: 10vw;
-  height: 3vw;
+.Question-feed {
+  list-style: none;
+  font-family: 'Lato', sans-serif;
+  margin: 0px;
+  padding: 0px;
 }
 
-.ask p {
-  font-size: 12px;
+h2 {
+  text-align: left;
 }
 
-.brief-description {
-  border-top: 1px solid rgb(179, 177, 177);
-  border-bottom: 1px solid rgb(179, 177, 177);
-  padding-bottom: 1rem;
-  padding-top: 1rem;
+.Question-feed > li {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 5px rgb(51, 51, 51);
+  box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
+  padding: 0px;
+  margin: 0px 0px 20px;
+}
+
+.Date-Posted {
+  display: inline-block;
   width: 100%;
+  color: rgb(255, 255, 255);
+  background-color: rgb(197, 44, 102);
+  padding: 5px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-.list {
+.Question-feed > li > time {
+  background-color: rgb(165, 82, 167);
+}
+.Question-feed > li > time > span {
+  display: none;
+}
+.Question-feed > li > time > .day {
+  display: block;
+  font-size: 56pt;
+  font-weight: 100;
+  line-height: 1;
+}
+.Question-feed > li time > .month {
+  display: block;
+  font-size: 24pt;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.Question-feed > li > time {
+  width: 120px;
+  height: 120px;
+  padding: 0px;
+  margin: 0px;
 }

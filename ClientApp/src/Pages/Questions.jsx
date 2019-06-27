@@ -35,12 +35,6 @@ export default function Questions(props) {
     Axios.post('/api/answers')
   }
 
-  const updateValue = e => {
-    const state = this.state
-    state.question[e.target.name] = e.target.value
-    this.setState(state)
-  }
-
   return (
     <section className="Post">
       <div className="question-post">
@@ -51,12 +45,13 @@ export default function Questions(props) {
             className="text-area"
             rows="8"
             cols="100"
-            onChange={() => updateValue()}
+            onChange={e => setAnswers(e.target.value)}
             placeholder="Answer this question"
             name="description"
           />
+          <button>Submit</button>
         </form>
-        <div>
+        {/* <div>
           {answers.map(answer => {
             return (
               <div>
@@ -66,7 +61,7 @@ export default function Questions(props) {
               </div>
             )
           })}
-        </div>
+        </div> */}
       </div>
     </section>
   )
