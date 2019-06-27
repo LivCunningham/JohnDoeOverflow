@@ -1,7 +1,11 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import QuestionFeed from '../components/QuestionFeed.jsx'
 import './HomeStyle.css'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+
+const API_URL =
+  'https://sdg-staff-directory-app.herokuapp.com/api/Liv%20Media/Employees'
 
 class Home extends Component {
   render() {
