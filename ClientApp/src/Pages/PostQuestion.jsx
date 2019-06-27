@@ -27,7 +27,7 @@ class PostQuestion extends Component {
     return (
       <section className="Post">
         <div className="question-post">
-          <h2>POST YOUR QUESTION BELOW</h2>
+          <h2 className="Post-Title">POST YOUR QUESTION BELOW</h2>
           <form className="input-Q" onSubmit={this.submitNewQuestion}>
             <input
               className="title-input"

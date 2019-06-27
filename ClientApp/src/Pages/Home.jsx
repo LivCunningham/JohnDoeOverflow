@@ -21,7 +21,17 @@ export default function Home() {
         {questions.map(index => {
           return (
             <li key={index}>
-              <p>{index.title}</p>
+              <h2>{index.title}</h2>
+              <div className="vote">
+                <button class="up-vote">˄</button>
+                <button class="down-vote">˅</button>
+              </div>
+              <time className="Date-Posted" datetime={index.datePosted}>
+                <span class="day">4</span>
+                <span class="month">Jul</span>
+                <span class="year">2014</span>
+                <span class="time">ALL DAY</span>
+              </time>
             </li>
           )
         })}
