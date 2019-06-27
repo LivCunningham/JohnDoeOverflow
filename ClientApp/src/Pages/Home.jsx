@@ -10,14 +10,22 @@ export default function Home() {
   useEffect(() => {
     axios.get(`https://localhost:5001/api/questions`).then(resp => {
       console.log({ resp })
-      setQuestion(resp.questions)
+      setQuestion(resp.data)
     })
   }, '')
 
   return (
     <div>
       <Header />
-      <ul className="Question-feed" />
+      <ul className="Question-feed">
+        {questions.map(index => {
+          return (
+            <li key={index}>
+              <p>{index.title}</p>
+            </li>
+          )
+        })}
+      </ul>
     </div>
   )
 }
