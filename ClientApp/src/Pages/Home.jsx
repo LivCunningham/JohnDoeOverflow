@@ -7,6 +7,8 @@ class Home extends Component {
   render() {
     return (
       <div>
+        {/* <main className="Q-mapping" >
+          {this.state.} */}
         <section className="Q-thread">
           <div className="Hero">
             <h3>John Doe's Top Questions</h3>
@@ -16,6 +18,7 @@ class Home extends Component {
           </div>
         </section>
         <QuestionFeed />
+        {/* </main> */}
       </div>
     )
   }
