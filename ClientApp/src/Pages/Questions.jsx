@@ -3,9 +3,11 @@ import Axios from 'axios'
 
 export default function Questions(props) {
   const [question, setQuestion] = useState({})
+  const [postAsnwer, setpostAsnwer] = useState({})
   const [answers, setAnswers] = useState([])
   const [voteCount, setVoteCount] = useState(0)
   const qID = props.match.params.id
+
   useEffect(() => {
     Axios.get(`api/questions/${qID}`).then(resp => {
       setQuestion({
@@ -13,10 +15,17 @@ export default function Questions(props) {
         description: resp.data.description,
         qVoteCount: resp.data.voteCount
       })
-      setAnswers({
-        answers: resp.data.answers,
-        aVoteCount: resp.data.voteCount
-      })
+      // setAnswers({
+      //   answers: resp.data.answers,
+      //   aVoteCount: resp.data.voteCount
+      // })
+    })
+  }, [])
+
+  useEffect(() => {
+    Axios.get(`https://localhost:5001/api/answers/${qID}`).then(resp => {
+      console.log({ resp })
+      setAnswers(resp.data)
     })
   }, [])
 
@@ -27,7 +36,12 @@ export default function Questions(props) {
 
   const downvote = () => {
     Axios.put(`/api/answers/voteA/${qID}`)
-    answers.aVoteCount = answers.VoteCount + 1
+    answers.VoteCount = answers.VoteCount + 1
+  }
+
+  //add new answer post
+  updateValue = event => {
+    answers.setpostAsnwer[event.target.name] = event.target.value
   }
 
   const submitAnswer = e => {
@@ -36,8 +50,8 @@ export default function Questions(props) {
   }
 
   return (
-    <section className="Post">
-      <div className="question-post">
+    <section>
+      <div className="Post">
         <h1>{question.title}</h1>
         <p>{question.description}</p>
         <form onSubmit={() => submitAnswer()}>
@@ -45,9 +59,9 @@ export default function Questions(props) {
             className="text-area"
             rows="8"
             cols="100"
-            onChange={e => setAnswers(e.target.value)}
             placeholder="Answer this question"
             name="description"
+            onChange={updateValue}
           />
           <button>Submit</button>
         </form>
@@ -63,6 +77,15 @@ export default function Questions(props) {
           })}
         </div> */}
       </div>
+      <ul className="answer-list">
+        {answers.map(index => {
+          return (
+            <li key={index}>
+              <p>{index.description}</p>
+            </li>
+          )
+        })}
+      </ul>
     </section>
   )
 }
