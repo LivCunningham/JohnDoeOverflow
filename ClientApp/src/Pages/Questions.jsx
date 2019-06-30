@@ -7,6 +7,7 @@ export default function Questions(props) {
   const [answers, setAnswers] = useState([])
   const [voteCount, setVoteCount] = useState(0)
   const qID = props.match.params.id
+  const API_URL = `https://localhost:5001/api/answers/${qID}`
 
   useEffect(() => {
     Axios.get(`api/questions/${qID}`).then(resp => {
@@ -22,32 +23,35 @@ export default function Questions(props) {
     })
   }, [])
 
-  useEffect(() => {
-    Axios.get(`https://localhost:5001/api/answers/${qID}`).then(resp => {
-      console.log({ resp })
-      setAnswers(resp.data)
-    })
-  }, [])
-
-  const upvote = () => {
-    Axios.put(`/api/answers/voteA/${qID}`)
-    answers.aVoteCount = answers.VoteCount + 1
-  }
-
-  const downvote = () => {
-    Axios.put(`/api/answers/voteA/${qID}`)
-    answers.VoteCount = answers.VoteCount + 1
-  }
-
-  //add new answer post
-  updateValue = event => {
-    answers.setpostAsnwer[event.target.name] = event.target.value
-  }
-
   const submitAnswer = e => {
     e.preventDefault()
-    Axios.post('/api/answers')
+    useEffect(() => {
+      Axios.post(`${API_URL}`).then(resp => {
+        console.log({ resp })
+        setAnswers(resp.data)
+      })
+    }, [])
   }
+
+  // const upvote = () => {
+  //   Axios.put(`/api/answers/voteA/${qID}`)
+  //   answers.aVoteCount = answers.VoteCount + 1
+  // }
+
+  // const downvote = () => {
+  //   Axios.put(`/api/answers/voteA/${qID}`)
+  //   answers.VoteCount = answers.VoteCount + 1
+  // }
+
+  // //add new answer post
+  // updateValue = event => {
+  //   answers.setpostAsnwer[event.target.name] = event.target.value
+  // }
+
+  // const submitAnswer = e => {
+
+  //   Axios.post('/api/answers')
+  // }
 
   return (
     <section>
@@ -61,9 +65,8 @@ export default function Questions(props) {
             cols="100"
             placeholder="Answer this question"
             name="description"
-            onChange={updateValue}
           />
-          <button>Submit</button>
+          <button className="add-answer">Submit</button>
         </form>
         {/* <div>
           {answers.map(answer => {
