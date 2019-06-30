@@ -31,7 +31,7 @@ namespace johndoeoverflow
       {
         var envConn = Environment.GetEnvironmentVariable("DATABASE_URL");
 
-        var conn = "server=localhost;database=JohnDoeOverflow;User Id=postgres;Password=Squeakyunicorn1";
+        var conn = "server=localhost;database=JohnDoeOverflow;";
         if (envConn != null)
         {
           conn = ConvertPostConnectionToConnectionString(envConn);

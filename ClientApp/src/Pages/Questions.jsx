@@ -3,7 +3,7 @@ import Axios from 'axios'
 
 export default function Questions(props) {
   const [question, setQuestion] = useState({})
-  const [postAsnwer, setpostAsnwer] = useState({})
+  const [postAnswer, setpostAnswer] = useState({})
   const [answers, setAnswers] = useState([])
   const [voteCount, setVoteCount] = useState(0)
   const qID = props.match.params.id
@@ -38,6 +38,7 @@ export default function Questions(props) {
   //   answers.aVoteCount = answers.VoteCount + 1
   // }
 
+<<<<<<< HEAD
   // const downvote = () => {
   //   Axios.put(`/api/answers/voteA/${qID}`)
   //   answers.VoteCount = answers.VoteCount + 1
@@ -52,6 +53,12 @@ export default function Questions(props) {
 
   //   Axios.post('/api/answers')
   // }
+=======
+  const submitAnswer = e => {
+    e.preventDefault()
+    Axios.post('/api/answers', postAnswer)
+  }
+>>>>>>> 06387d012b8d8748b0bfc2a25c5985badaaa1e63
 
   return (
     <section>
@@ -65,6 +72,10 @@ export default function Questions(props) {
             cols="100"
             placeholder="Answer this question"
             name="description"
+<<<<<<< HEAD
+=======
+            onChange={e => setpostAnswer(e.target.value)}
+>>>>>>> 06387d012b8d8748b0bfc2a25c5985badaaa1e63
           />
           <button className="add-answer">Submit</button>
         </form>
