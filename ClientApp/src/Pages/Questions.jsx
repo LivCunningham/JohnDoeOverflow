@@ -3,7 +3,7 @@ import Axios from 'axios'
 
 export default function Questions(props) {
   const [question, setQuestion] = useState({})
-  const [postAsnwer, setpostAsnwer] = useState({})
+  const [postAnswer, setpostAnswer] = useState({})
   const [answers, setAnswers] = useState([])
   const [voteCount, setVoteCount] = useState(0)
   const qID = props.match.params.id
@@ -39,14 +39,9 @@ export default function Questions(props) {
     answers.VoteCount = answers.VoteCount + 1
   }
 
-  //add new answer post
-  updateValue = event => {
-    answers.setpostAsnwer[event.target.name] = event.target.value
-  }
-
   const submitAnswer = e => {
     e.preventDefault()
-    Axios.post('/api/answers')
+    Axios.post('/api/answers', postAnswer)
   }
 
   return (
@@ -61,7 +56,7 @@ export default function Questions(props) {
             cols="100"
             placeholder="Answer this question"
             name="description"
-            onChange={updateValue}
+            onChange={e => setpostAnswer(e.target.value)}
           />
           <button>Submit</button>
         </form>
