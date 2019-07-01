@@ -41,7 +41,7 @@ export default function Questions(props) {
 
   const submitAnswer = e => {
     e.preventDefault()
-    Axios.post('/api/answers', postAnswer)
+    Axios.post('/api/answers', { postAnswer })
   }
 
   return (

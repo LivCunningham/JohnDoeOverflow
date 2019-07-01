@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 
 export default function Home() {
   const [questions, setQuestion] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
 
   //question feed
   useEffect(() => {
@@ -13,11 +14,26 @@ export default function Home() {
       console.log({ resp })
       setQuestion(resp.data)
     })
-  }, '')
+  }, [])
+
+  const search = e => {
+    e.preventDefault()
+    axios.get('/api/search?searchTerm=' + searchTerm).then(resp => {
+      setQuestion(resp.data)
+    })
+  }
 
   return (
     <div>
       <Header />
+      <form onSubmit={search}>
+        <input
+          type="search"
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
+        />
+        <button>Search</button>
+      </form>
       <ul className="Question-feed">
         {questions.map(index => {
           return (
